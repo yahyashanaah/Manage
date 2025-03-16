@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from crud import create_expense, delete_expense, get_expenses, get_expenses_by_month, update_expense
+from crud_expenses import create_expense, delete_expense, get_expenses, get_expenses_by_month, update_expense
 from models import ExpenseCreate, ExpenseResponse
 
 router = APIRouter()

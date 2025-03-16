@@ -16,3 +16,10 @@ class ExpenseCreate(BaseModel):
 class ExpenseResponse(ExpenseCreate):
     id: int
     month: str
+
+class TTSTextCreate(BaseModel):
+    text: str
+
+class TTSTextResponse(TTSTextCreate):
+    id: int
+    audio_file: str

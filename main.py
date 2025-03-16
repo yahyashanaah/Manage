@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import expenses, categories
+from routes import expenses, categories,tts
 from database import create_tables
 
 app = FastAPI()
@@ -19,6 +19,7 @@ def startup():
 
 app.include_router(categories.router, prefix="/categories", tags=["Categories"])
 app.include_router(expenses.router, prefix="/expenses", tags=["Expenses"])
+app.include_router(tts.router, prefix="/tts", tags=["TTS"])
 
 @app.get("/")
 async def root():

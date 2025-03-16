@@ -27,3 +27,12 @@ def create_tables():
             FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
         )
         """)
+
+        conn.execute("""
+        CREATE TABLE IF NOT EXISTS tts_texts (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            text TEXT NOT NULL,
+            audio_file TEXT NOT NULL
+        )
+        """)
+        

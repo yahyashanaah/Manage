@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from crud import create_category, delete_category, get_categories, update_category
+from crud_categories import create_category, delete_category, get_categories, update_category
 from models import CategoryCreate, CategoryResponse
 
 router = APIRouter()
