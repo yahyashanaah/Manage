@@ -30,9 +30,18 @@ def create_tables():
 
         conn.execute("""
         CREATE TABLE IF NOT EXISTS tts_texts (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            text TEXT NOT NULL,
-            audio_file TEXT NOT NULL
-        )
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        text TEXT NOT NULL,
+        audio_file TEXT NOT NULL,
+        language_id INTEGER NOT NULL,
+        FOREIGN KEY (language_id) REFERENCES languages(id) ON DELETE CASCADE
+        );
+        """)
+
+        conn.execute("""
+        CREATE TABLE IF NOT EXISTS languages (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        code TEXT UNIQUE NOT NULL -- 'en', 'ar', etc.
+        );
         """)
         

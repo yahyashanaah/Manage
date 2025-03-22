@@ -19,6 +19,7 @@ class ExpenseResponse(ExpenseCreate):
 
 class TTSTextCreate(BaseModel):
     text: str
+    language_id: int
 
 class TTSTextResponse(TTSTextCreate):
     id: int
