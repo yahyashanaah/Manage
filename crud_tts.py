@@ -43,6 +43,26 @@ def create_tts_entry(text: str, language_id: int):
         raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
 
 
+def get_all_tts_entries():
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT tts_texts.id, tts_texts.text, tts_texts.audio_file, languages.code 
+            FROM tts_texts 
+            JOIN languages ON tts_texts.language_id = languages.id
+            ORDER BY tts_texts.id DESC
+        """)
+        entries = cursor.fetchall()
+
+        if not entries:
+            raise HTTPException(status_code=404, detail="No audio files found.")
+
+        return [
+            {"id": row[0], "text": row[1], "audio_file": row[2], "language": row[3]}
+            for row in entries
+        ]
+
+
 def get_tts_entry(tts_id: int):
     with get_db() as conn:
         cursor = conn.cursor()
