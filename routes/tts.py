@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from models import TTSTextCreate, TTSTextResponse
-from crud_tts import create_tts_entry, get_all_tts_entries, get_tts_entry, delete_tts_entry
+from services.crud_tts import create_tts_entry, get_all_tts_entries, get_tts_entry, delete_tts_entry
 
 router = APIRouter()
 
